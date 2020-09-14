@@ -11,12 +11,10 @@ with open('file_for_task7.txt', 'r', encoding='utf-8') as file:
         new_line = line.strip().split()                     # разделяем строку на отдельные элементы
         name, form, cash, cost = new_line[0], new_line[1], int(new_line[2]), int(new_line[3])   # отдельные эл-ты
         profit = cash - cost                                # вычисляем прибыль для фирмы
-        firm_stat = [name, form, cash, cost, profit]        # сохраняем элементы и значение прибыли в список
-        if firm_stat[4] > 0:                    # пополняем счетчик неотрицательной прибыли и фирм с неотр. прибылью
-            total_profit += firm_stat[4]
-            count += 1
-
-        d1[firm_stat[0]] = firm_stat[4]         # создаем словарь с фирмами и их прибылями (и убытками)
+        if profit > 0:                # пополняем счетчик неотрицательной прибыли и фирм с неотр. прибылью   
+            total_profit += profit
+            count += 1                
+        d1[name] = profit             # создаем словарь с фирмами и их прибылями (и убытками)
     avg_profit = total_profit / count           # считаем среднюю прибыль
     d2 = {'average_profit': avg_profit}         # создаем словарь со средней прибылью
 
