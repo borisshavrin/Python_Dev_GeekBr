@@ -18,14 +18,14 @@ class Worker:                                   # Базовый класс
 class Position(Worker):                             # Класс на базе Worker
 
     def get_full_name(self, name, surname):         # метод получения полного имени сотрудника
-        Worker.name = name
-        Worker.surname = surname
+        self.name = name
+        self.surname = surname
         full_name = f'{name} {surname}'
         return full_name
 
     def get_total_income(self, wage, bonus):        # метод получения дохода
-        Worker._income['wage'] = wage
-        Worker._income['bonus'] = bonus
+        self._income['wage'] = wage
+        self._income['bonus'] = bonus
         total_income = wage + bonus
         return total_income
 
@@ -38,5 +38,8 @@ worker2 = Position()
 print(worker2.get_full_name('Андрей', 'Смирнов'))
 print(worker2.get_total_income(60000, 13000))
 
-print(f'Словарь с последними данными: {inc}')
-print(f'Атрибуты класса Worker: {Worker.name}, {Worker.surname}')
+#print(f'Словарь с последними данными: {inc}')
+#print(f'Атрибуты класса Worker: {Worker.name}, {Worker.surname}')
+
+# print(f'Атрибуты объекта worker1: {worker1.name}, {worker1.surname}')
+# print(f'Атрибуты объекта worker2: {worker2.name}, {worker2.surname}')
