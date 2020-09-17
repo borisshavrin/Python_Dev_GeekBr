@@ -11,13 +11,17 @@ class Road:
     _widht = 0
 
     def total_weight(self, lenght, widht):
-        Road._lenght = lenght
-        Road._widht = widht
+        self._lenght = lenght
+        self._widht = widht
         total = lenght * widht * 25 * 5
         print(f'Масса асфальта, необходимого для покрытия всего дорожного полотна: {total/1000} т.')
 
 
 r = Road()
 r.total_weight(20, 5000)
+
 print(Road._lenght)
 print(Road._widht)
+
+print(r._lenght)
+print(r._widht)
