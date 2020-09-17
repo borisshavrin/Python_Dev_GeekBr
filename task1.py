@@ -18,8 +18,7 @@ class TrafficLight:
         print(self.__color[1])
         time.sleep(2)
         print((self.__color[2]))
-        time.sleep(2)
-        s
+        time.sleep(2)       
 
 
 tl = TrafficLight()
