@@ -8,35 +8,36 @@
 
 
 class Stationery:
-    title = 'канцелярия'
+    def __init__(self, title):
+        self.title = title
 
     def drow(self):
-        print('Запуск отрисовки')
+        print(f'Запуск отрисовки:')
 
 
 class Pen(Stationery):
     def drow(self):
-        print('Я синяя ручка, во мне есть стержень!')
+        super().drow()
+        print(f'Сделайте надпись с помощью {self.title}')
 
 
 class Pensil(Stationery):
     def drow(self):
-        print('Я - карандаш, мой дом - Икея!')
+        super().drow()
+        print(f'Обведите контур, используя {self.title}')
 
 
 class Handle(Stationery):
     def drow(self):
-        print('Я - маркер, подмечаю самое важное!')
+        super().drow()
+        print(f'Выделите фрагмент с помощью {self.title}')
 
 
-s1 = Stationery()
+s1 = Pen('Ручка')
 s1.drow()
 
-s2 = Pen()
+s2 = Pensil('Карандаш')
 s2.drow()
 
-s3 = Pensil()
+s3 = Handle('Маркер')
 s3.drow()
-
-s4 = Handle()
-s4.drow()
