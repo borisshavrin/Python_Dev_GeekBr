@@ -11,84 +11,76 @@
 
 
 class Car:
-    speed = 0
-    color = 'red'
-    name = 'monster'
-    is_police = False
+    def __init__(self, speed, color, name, is_polise):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_polise
 
-    def go(self, speed):
-        if speed > 0:
-            print('Машина поехала')
+    def go(self):
+        if self.speed > 0:
+            print(f'{self.color} машина {self.name} поехала')
+        else:
+            self.stop()
 
-    def stop(self, speed):
-        if speed == 0:
+    def stop(self):
+        if self.speed == 0:
             print('Машина остановилась')
+        else:
+            self.go()
 
     def turn(self, direction):
         print(f'Машина повернула {direction}')
 
-    def show_speed(self, speed):
-        print(f'Скорость машины в данный момент: {speed}')
+    def show_speed(self):
+        print(f'Скорость {self.name} в данный момент: {self.speed} км/ч')
 
 
 class TownCar(Car):
-    def show_speed(self, speed):
-        print(f'Скорость TownCar в данный момент: {speed}')
-        if speed > 60:
-            print('Превышение скорости!')
+    def show_speed(self):
+        super(TownCar, self).show_speed()
+        if self.speed > 60:
+            print(f'Превышение скорости на {self.speed - 60} км/ч')
 
 
 class SportCar(Car):
-    color = 'yellow'
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
 
 class WorkCar(Car):
-    def show_speed(self, speed):
-        print(f'Скорость WorkCar в данный момент: {speed}')
-        if speed > 40:
-            print('Превышение скорости!')
+    def show_speed(self):
+        super(WorkCar, self).show_speed()
+        if self.speed > 40:
+            print(f'Превышение скорости на {self.speed - 40} км/ч')
 
 
 class PoliceCar(Car):
-    is_police = True
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.is_police = True
 
 
-car1 = TownCar()
-print(car1.speed)
-print(car1.color)
-print(car1.name)
-car1.go(10)
-car1.show_speed(100)
-car1.stop(10)
+car1 = TownCar(100, 'Красная', 'Ford Focus', False)
+car1.go()
+car1.show_speed()
+car1.stop()
 car1.turn('налево')
-print(f'Это полицейская машина? {car1.is_police}', '\n')
+print(f'Это полицейская машина? {car1.is_police}', '\n', '________________________', '\n')
 
-car2 = SportCar()
-print(car2.speed)
-print(car2.color)
-print(car2.name)
-car2.go(70)
-car2.show_speed(100)
-car2.stop(0)
+car2 = WorkCar(100, 'Серая', 'Mercedes Sprinter', False)
+car2.go()
+car2.show_speed()
 car2.turn('направо')
-print(f'Это полицейская машина? {car2.is_police}', '\n')
+print(f'Это полицейская машина? {car2.is_police}', '\n', '________________________', '\n')
 
-car3 = WorkCar()
-print(car3.speed)
-print(car3.color)
-print(car3.name)
-car3.go(70)
-car3.show_speed(50)
-car3.stop(10)
-car3.turn('налево')
-print(f'Это полицейская машина? {car3.is_police}', '\n')
+car3 = PoliceCar(100, 'Синяя', 'Audi A5', None)
+car3.go()
+car3.show_speed()
+car3.turn('направо')
+print(f'Это полицейская машина? {car3.is_police}', '\n', '________________________', '\n')
 
-car4 = PoliceCar()
-print(car4.speed)
-print(car4.color)
-print(car4.name)
-car4.go(100)
-car4.show_speed(100)
-car4.stop(100)
-car4.turn('налево')
-print(f'Это полицейская машина? {car4.is_police}')
+car4 = SportCar(0, 'Желтая', 'Nissan GTR', False)
+car4.go()
+car4.show_speed()
+print(f'Это полицейская машина? {car4.is_police}', '\n', '________________________', '\n')
