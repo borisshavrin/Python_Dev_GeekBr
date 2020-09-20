@@ -7,21 +7,16 @@
 
 
 class Road:
-    _lenght = 0
-    _widht = 0
+    def __init__(self, _lenght, _widht):
+        self.lenght = _lenght
+        self.widht = _widht
 
-    def total_weight(self, lenght, widht):
-        self._lenght = lenght
-        self._widht = widht
-        total = lenght * widht * 25 * 5
+    def total_weight(self):
+        weight = 25
+        sm = 5
+        total = self.lenght * self.widht * weight * sm
         print(f'Масса асфальта, необходимого для покрытия всего дорожного полотна: {total/1000} т.')
 
 
-r = Road()
-r.total_weight(20, 5000)
-
-print(Road._lenght)
-print(Road._widht)
-
-print(r._lenght)
-print(r._widht)
+r = Road(5000, 20)
+r.total_weight()
