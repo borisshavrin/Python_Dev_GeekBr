@@ -5,41 +5,35 @@
     методы получения полного имени сотрудника (get_full_name) и дохода с учетом премии (get_total_income).
     Проверить работу примера на реальных данных (создать экземпляры класса Position, передать данные,
     проверить значения атрибутов, вызвать методы экземпляров)."""
-inc = {}
 
 
-class Worker:                                   # Базовый класс
-    name = ''                                   # Атрибуты
-    surname = ''
-    position = ''
-    _income = inc
-
-
-class Position(Worker):                             # Класс на базе Worker
-
-    def get_full_name(self, name, surname):         # метод получения полного имени сотрудника
+class Worker:
+    def __init__(self, name, surname, position, wage, bonus):
         self.name = name
         self.surname = surname
-        full_name = f'{name} {surname}'
+        self.position = position
+        inc = {'wage': wage, 'bonus': bonus}
+        self._income = inc
+
+
+class Position(Worker):                              # Класс на базе Worker
+    def get_full_name(self):                         # метод получения полного имени сотрудника
+        full_name = f'{self.name} {self.surname}'
         return full_name
 
-    def get_total_income(self, wage, bonus):        # метод получения дохода
-        self._income['wage'] = wage
-        self._income['bonus'] = bonus
-        total_income = wage + bonus
+    def get_total_income(self):        # метод получения дохода
+        total_income = self._income['wage'] + self._income['bonus']
         return total_income
 
 
-worker1 = Position()
-print(worker1.get_full_name('Николай', 'Леонтьев'))
-print(worker1.get_total_income(50000, 15000))
+worker1 = Position('Николай', 'Леонтьев', 'Журналист', 50000, 15000)
+name = worker1.get_full_name()
+total_inc = worker1.get_total_income()
+print(f'Зарплата сотрудника <{name}>, '
+      f'находящегося должности <{worker1.position}>, составляет: {total_inc} р.')
 
-worker2 = Position()
-print(worker2.get_full_name('Андрей', 'Смирнов'))
-print(worker2.get_total_income(60000, 13000))
-
-#print(f'Словарь с последними данными: {inc}')
-#print(f'Атрибуты класса Worker: {Worker.name}, {Worker.surname}')
-
-# print(f'Атрибуты объекта worker1: {worker1.name}, {worker1.surname}')
-# print(f'Атрибуты объекта worker2: {worker2.name}, {worker2.surname}')
+worker2 = Position('Андрей', 'Смирнов', 'Администратор', 60000, 13000)
+name = worker2.get_full_name()
+total_inc = worker2.get_total_income()
+print(f'Зарплата сотрудника <{name}>, '
+      f'находящегося должности <{worker2.position}>, составляет: {total_inc} р.')
