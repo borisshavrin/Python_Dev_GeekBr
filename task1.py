@@ -6,12 +6,12 @@
 
 
 class Data:
-    def __init__(self, date):
-        Data.date_str = date
+    def __init__(self, *date):
+        self.date_str = date
 
     @classmethod
-    def number(cls):
-        number_date = cls.date_str.split('-')
+    def number(cls, date):
+        number_date = date.split('-')
         day = int(number_date[0])
         month = int(number_date[1])
         year = int(number_date[2])
@@ -23,16 +23,17 @@ class Data:
         day = int(number_date[0])
         month = int(number_date[1])
         year = int(number_date[2])
-        if day not in range(1, 32):
+        if not 0 < day < 32:
             raise ValueError("Дней в месяце может быть от 1 до 31")
-        if month not in range(1, 13):
+        if not 0 < month < 13:
             raise ValueError("Месяцев в году может быть от 1 до 12")
-        if year not in range(2021):
+        if not 0 < year < 2021:
             raise ValueError("Этот год еще не наступил")
 
 
-date1 = '01-05-2020'
-date2 = '32-13-2021'
-print(Data(date1).number(), '\n')
-print(Data.date_str)
-print(Data.validation(date2))
+date1 = '01-01-2020'
+date2 = '30-12-2020'
+Data(date1, date2)
+
+print(Data.number(date1), '\n')
+print(Data.validation(date1))
