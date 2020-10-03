@@ -116,17 +116,17 @@ OrgTech.import_product(one, two, three, four, five, six, seven, eight)
 
 for row in Store.data:
     print(row)
-print('____________________________________________________________')
+print('-'*60)
 
 first_order = Printer('P1000', 10000, 4)    # Создание объектов - заказов на экспорт
-OrgTech.export_product(first_order)         # Экспорт заказов
-for row in Store.data:                    # вывод базы Оргтехники
+Printer.export_product(first_order)         # Экспорт заказов
+for row in Store.data:                      # вывод базы Оргтехники
     print(row)
-print('____________________________________________________________')
+print('-'*60)
 
-second_order = Scanner('S2000', 2000, 3)    # Создание объектов - заказов на экспорт
-OrgTech.export_product(second_order)        # Экспорт заказов
-for row in Store.data:                    # вывод базы Оргтехники
+second_order = Scanner('S2000', 2000, 3)     # Создание объектов - заказов на экспорт
+Scanner.export_product(second_order)         # Экспорт заказов
+for row in Store.data:                       # вывод базы Оргтехники
     print(row)
 
 #print(second_order.__dict__)
